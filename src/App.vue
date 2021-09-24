@@ -1,9 +1,5 @@
 <template>
   <div class="globalContainer d-flex align-items-center justify-content-center">
-    <div v-if="alert" class="alert alert-primary" role="alert">
-      This is a primary alert—check it out!
-    </div>
-
     <form>
       <Title :titolo="titolo"></Title>
       <Clock></Clock>
