@@ -62,17 +62,14 @@
       </div>
       <div class="panel-body">
         <ul>
-          <li :key="i" v-for="(task, i) in tasksArray">
-            <b>Task n°:</b> {{ i + 1 }} <br />
-            <b>Titolo:</b> {{ task[0] }} <br />
-            <b>Descrizione:</b> {{ task[1] }} <br />
-            <button
-              class="btn btn-outline-danger btn-lg but"
-              @click.prevent="deleteTask(i)"
-            >
-              Cancella
-            </button>
-          </li>
+          <AddTask
+            :key="i"
+            :i="i"
+            :titolo="task[0]"
+            :descrizione="task[1]"
+            v-for="(task, i) in tasksArray"
+            @deleteTask="deleteTask"
+          ></AddTask>
         </ul>
       </div>
     </div>
@@ -81,9 +78,11 @@
 
 <script>
 import DeleteTask from "./DeleteTask.vue";
+import AddTask from "./AddTask.vue";
 export default {
   components: {
     DeleteTask,
+    AddTask,
   },
   data() {
     return {
