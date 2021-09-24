@@ -10,9 +10,6 @@
       <hr />
       <Main></Main>
     </form>
-    <hr />
-
-    <div class="d-flex gap"></div>
   </div>
 </template>
 
