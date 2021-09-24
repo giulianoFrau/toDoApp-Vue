@@ -42,23 +42,15 @@
           </div>
           <div class="panel-body">
             <ul>
-              <li :key="j" v-for="(taskDel, j) in tasksDeleted">
-                <b>Task n°:</b> {{ j + 1 }} <br />
-                <b>Titolo:</b> {{ taskDel[0] }} <br />
-                <b>Descrizione:</b> {{ taskDel[1] }} <br />
-                <button
-                  class="btn btn-outline-success btn-lg but"
-                  @click.prevent="resume(j)"
-                >
-                  Ripristina
-                </button>
-                <button
-                  class="btn btn-outline-danger btn-lg but"
-                  @click.prevent="deleteDefinitely(j)"
-                >
-                  Cancella Definitivamente
-                </button>
-              </li>
+              <DeleteTask
+                :j="j"
+                :titolo="taskDel[0]"
+                :descrizione="taskDel[1]"
+                :key="j"
+                v-for="(taskDel, j) in tasksDeleted"
+                @resume="resume"
+                @deleteDefinitely="deleteDefinitely"
+              ></DeleteTask>
             </ul>
           </div>
         </div>
@@ -88,7 +80,11 @@
 </template>
 
 <script>
+import DeleteTask from "./DeleteTask.vue";
 export default {
+  components: {
+    DeleteTask,
+  },
   data() {
     return {
       tasksArray: [],
